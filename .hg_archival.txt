@@ -1,0 +1,6 @@
+repo: a2257ec756090dfb5fb58742f550d3179ea8ffa9
+node: 2f87ca2ab59ae33749163bfa73eb717427c60842
+branch: arkit2.0_beta
+latesttag: 1.5.1
+latesttagdistance: 2
+changessincelatesttag: 35
