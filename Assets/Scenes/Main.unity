@@ -502,7 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   referenceImage: {fileID: 11400000, guid: 3d68b416cbfb142b3b32ad292fb0e67a, type: 2}
-  prefabToGenerate: {fileID: 100076, guid: a78a09f880e7b45cea3a897821495cfe, type: 3}
+  prefabToGenerate: {fileID: 108542, guid: 14fb53f2cd63dc748a001cc7b31bf21d, type: 2}
 --- !u!4 &1243630442
 Transform:
   m_ObjectHideFlags: 0
