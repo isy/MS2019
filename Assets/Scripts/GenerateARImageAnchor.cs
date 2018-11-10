@@ -14,6 +14,7 @@ public class GenerateARImageAnchor : MonoBehaviour
   private GameObject prefabToGenerate;
 
   private GameObject imageAnchorGO;
+  private UnityARCameraManager ARCameraManager;
 
   // Use this for initialization
   void Start()
@@ -21,6 +22,7 @@ public class GenerateARImageAnchor : MonoBehaviour
     UnityARSessionNativeInterface.ARImageAnchorAddedEvent += AddImageAnchor;
     UnityARSessionNativeInterface.ARImageAnchorUpdatedEvent += UpdateImageAnchor;
     UnityARSessionNativeInterface.ARImageAnchorRemovedEvent += RemoveImageAnchor;
+    ARCameraManager = GameObject.Find("ARCameraManager").GetComponent<UnityARCameraManager>();
 
   }
 
@@ -30,8 +32,18 @@ public class GenerateARImageAnchor : MonoBehaviour
     if (arImageAnchor.referenceImageName == referenceImage.imageName)
     {
       Vector3 position = UnityARMatrixOps.GetPosition(arImageAnchor.transform);
-      Quaternion rotation = UnityARMatrixOps.GetRotation(arImageAnchor.transform);
-
+      // Quaternion rotation = UnityARMatrixOps.GetRotation(arImageAnchor.transform);
+      // オブジェクトがカメラを向くようにする
+      Quaternion rotation = Quaternion.LookRotation(
+        ARCameraManager.m_camera.transform.localPosition - position
+        );
+      // Quaternion rotation = Quaternion.LookRotation(
+      //   new Vector3(
+      //     ARCameraManager.m_camera.transform.localPosition.x - position.x,
+      //     0.0f,
+      //     ARCameraManager.m_camera.transform.localPosition.z - position.z
+      //   ));
+      Debug.Log(string.Format("x:{0:0.######} y:{1:0.######} z:{2:0.######}", position.x, position.y, rotation));
       imageAnchorGO = Instantiate<GameObject>(prefabToGenerate, position, rotation);
     }
   }
@@ -42,7 +54,13 @@ public class GenerateARImageAnchor : MonoBehaviour
     if (arImageAnchor.referenceImageName == referenceImage.imageName)
     {
       imageAnchorGO.transform.position = UnityARMatrixOps.GetPosition(arImageAnchor.transform);
-      imageAnchorGO.transform.rotation = UnityARMatrixOps.GetRotation(arImageAnchor.transform);
+      // imageAnchorGO.transform.rotation = UnityARMatrixOps.GetRotation(arImageAnchor.transform);
+      imageAnchorGO.transform.rotation = Quaternion.LookRotation(
+        new Vector3(
+          ARCameraManager.m_camera.transform.localPosition.x - imageAnchorGO.transform.position.x,
+          0.0f,
+          ARCameraManager.m_camera.transform.localPosition.z - imageAnchorGO.transform.position.z
+        ));
     }
 
   }
