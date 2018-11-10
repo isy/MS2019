@@ -47,3 +47,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/UnityARKitPlugin/Examples/ARKit2.0/UnityARObjectAnchor/UnityARObjectAnchor.unity
     guid: 9b7966300d2d04d8e86ace41d59d178c
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 333b976620f974a68b71c4ea1367aea7
+  m_configObjects: {}
