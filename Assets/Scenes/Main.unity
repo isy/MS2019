@@ -606,7 +606,7 @@ GameObject:
   - component: {fileID: 1243630442}
   - component: {fileID: 1243630441}
   m_Layer: 0
-  m_Name: StickMan
+  m_Name: Zombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
