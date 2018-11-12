@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
   // Use this for initialization
   void Start()
   {
-
+    this.gameObject.tag = "Enemy";
   }
 
   // Update is called once per frame
@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
   public void Hit()
   {
     print("Hit");
-    Destroy(this.gameObject);
+    // Destroy(this.gameObject);
+    Destroy(transform.root.gameObject);
   }
 }
