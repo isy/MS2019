@@ -45,6 +45,7 @@ public class GenerateARImageAnchor : MonoBehaviour
       //   ));
       Debug.Log(string.Format("x:{0:0.######} y:{1:0.######} z:{2:0.######}", position.x, position.y, rotation));
       imageAnchorGO = Instantiate<GameObject>(prefabToGenerate, position, rotation);
+      // imageAnchorGO.tag = "Enemy";
     }
   }
 
@@ -61,6 +62,7 @@ public class GenerateARImageAnchor : MonoBehaviour
           0.0f,
           ARCameraManager.m_camera.transform.localPosition.z - imageAnchorGO.transform.position.z
         ));
+      // imageAnchorGO.tag = "Enemy";
     }
 
   }
