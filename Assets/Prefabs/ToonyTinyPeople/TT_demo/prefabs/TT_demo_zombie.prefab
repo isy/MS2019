@@ -1032,3 +1032,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8517683724cd148d2bf563c272d0737c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effect: {fileID: 1022078978111194, guid: bea06f6f8a2964c4aa0a4f9ce8db0dd8, type: 2}
+  explosionSE: {fileID: 8300000, guid: 8cea342fb7bd34974b64a79a2c23964b, type: 3}

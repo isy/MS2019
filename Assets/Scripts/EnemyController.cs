@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+  public GameObject effect;
+  public AudioClip explosionSE;
 
   // Use this for initialization
   void Start()
@@ -20,7 +22,12 @@ public class EnemyController : MonoBehaviour
   public void Hit()
   {
     print("Hit");
+    GameObject g = Instantiate(effect, transform.position + new Vector3(0, 0.04f, 0), effect.transform.rotation);
+    AudioSource.PlayClipAtPoint(explosionSE, transform.position);
+    Destroy(g, 1.0f);
     // Destroy(this.gameObject);
+    // transform.root.gameObject.GetComponent<GenerateARImageAnchor>().OnDestroy();
+    // transform.root.gameObject.GetComponent<GenerateARImageAnchor>().RemoveImageAnchor();
     Destroy(transform.root.gameObject);
   }
 }
