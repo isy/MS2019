@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 114355642390796326}
   - component: {fileID: 65830053344727814}
   m_Layer: 0
-  m_Name: TT_demo_zombie
+  m_Name: Zombie2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -674,7 +674,7 @@ Transform:
   m_GameObject: {fileID: 108542}
   m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: -3.68, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 409848}
   - {fileID: 486650}
@@ -1034,6 +1034,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effect: {fileID: 1022078978111194, guid: bea06f6f8a2964c4aa0a4f9ce8db0dd8, type: 2}
   explosionSE: {fileID: 8300000, guid: 8cea342fb7bd34974b64a79a2c23964b, type: 3}
-  anchorObjectName: Zombie
-  hp: 10
-  score: 10
+  anchorObjectName: Zombie1
+  hp: 15
+  score: 30

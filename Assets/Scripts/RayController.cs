@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class RayController : MonoBehaviour
 {
@@ -31,7 +30,5 @@ public class RayController : MonoBehaviour
   private void EnemyHit(RaycastHit hit)
   {
     hit.transform.gameObject.GetComponent<EnemyController>().Hit();
-    count++;
-    GameObject.Find("Score").GetComponent<Text>().text = "Score: " + count.ToString();
   }
 }
