@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class SceneController : MonoBehaviour
 {
+  public AudioClip startSE;
 
   // Use this for initialization
   void Start()
@@ -23,6 +24,7 @@ public class SceneController : MonoBehaviour
 #else
       if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) return;
 #endif
+      AudioSource.PlayClipAtPoint(startSE, transform.position);
       SceneManager.LoadScene("Main");
     }
   }
