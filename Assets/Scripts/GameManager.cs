@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
   public static GameManager instance;
   public Score score;
+  public GameTimer gameTimer;
   // Use this for initialization
   void Start()
   {
