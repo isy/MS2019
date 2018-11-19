@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
   public static GameManager instance;
   public Score score;
+  public GameTimer gameTimer;
   // Use this for initialization
   void Start()
   {
@@ -16,6 +17,5 @@ public class GameManager : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-
   }
 }

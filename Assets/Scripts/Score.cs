@@ -7,10 +7,11 @@ public class Score : MonoBehaviour
 {
   private GameObject scoreNumber;
   public AudioClip scoreSE;
-  int count = 0;
+  public int count = 0;
 
   void Start()
   {
+    DontDestroyOnLoad(this);
     scoreNumber = GameObject.Find("Number");
   }
 
