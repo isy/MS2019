@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameTimer : MonoBehaviour
 {
@@ -13,13 +14,11 @@ public class GameTimer : MonoBehaviour
 
   public bool isStarted = false;
   public Text timeText;
-  // Use this for initialization
   void Start()
   {
     timeText.text = calcTime(minute, seconds);
   }
 
-  // Update is called once per frame
   void Update()
   {
     if (isStarted) CountTime();
@@ -29,7 +28,11 @@ public class GameTimer : MonoBehaviour
   {
     totalTime = minute * 60 + seconds;
     totalTime -= Time.deltaTime;
-    if (totalTime < 0) return;
+    if (totalTime < 0)
+    {
+      SceneManager.LoadSceneAsync("Score");
+      return;
+    }
     minute = (int)totalTime / 60;
     seconds = totalTime - minute * 60;
     if (totalTime < 10) timeText.color = new Color(240f / 255f, 0f / 255f, 10f / 255f);

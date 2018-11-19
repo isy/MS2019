@@ -626,6 +626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreSE: {fileID: 8300000, guid: 3552af4ba91444542858a244f00073ff, type: 3}
+  count: 0
 --- !u!4 &536907395
 Transform:
   m_ObjectHideFlags: 0
@@ -1340,7 +1341,7 @@ MonoBehaviour:
   delay: 0
   style: 0
   playOnAwake: 1
-  m_progress: 0
+  m_progress: 1
   usePosition: 0
   useRotation: 0
   useScale: 1
