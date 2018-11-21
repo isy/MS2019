@@ -23,8 +23,8 @@ public class TotalScore : MonoBehaviour
   {
     yield return new WaitForSeconds(0.01f);
     int before = 0;
-    // int after = GameManager.instance.score.count;
-    int after = 300;
+    int after = GameManager.instance.score.count;
+    // int after = 300;
     float elapsedTime = 0.0f;
 
     while (elapsedTime < time)

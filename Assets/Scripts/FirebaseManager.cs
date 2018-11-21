@@ -22,12 +22,12 @@ public class FirebaseManager : MonoBehaviour
 
   }
 
-  public void writeScore(int scorePoint, string name)
+  public void writeScore(int scorePoint, string name, string uid)
   {
     Score score = new Score(scorePoint, name);
     string json = JsonUtility.ToJson(score);
 
-    dbReference.Child("scores").SetRawJsonValueAsync(json);
+    dbReference.Child("scores").Child(uid).SetRawJsonValueAsync(json);
   }
 
   public class Score
