@@ -336,7 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b238759f469ed42b9988d6af78e9032b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minute: 1
+  minute: 60
   seconds: 0
   isStarted: 0
   timeText: {fileID: 1406448588}
@@ -502,6 +502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: {fileID: 536907394}
   gameTimer: {fileID: 192005138}
+  uid: 
 --- !u!1 &289512706
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,7 +751,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1100, y: 600}
+  m_SizeDelta: {x: 1300, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1022190480
 MonoBehaviour:
