@@ -14,6 +14,7 @@ public class RayController : MonoBehaviour
   {
     if (Input.GetMouseButtonDown(0))
     {
+      GameManager.instance.api.CallImageAnalysis();
       Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
       print(Input.mousePosition);
       RaycastHit hit = new RaycastHit();
