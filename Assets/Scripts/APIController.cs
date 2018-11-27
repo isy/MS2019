@@ -7,7 +7,16 @@ using UnityEngine.Networking;
 
 public class APIController : MonoBehaviour
 {
+  RenderTexture arTexture;
+  Texture2D texture;
+  public FirebaseManager fb;
   private string encode;
+
+  void Start()
+  {
+    texture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGBA32, false);
+    arTexture = new RenderTexture(texture.width, texture.height, 24, RenderTextureFormat.ARGB32);
+  }
   public void CallImageAnalysis()
   {
     StartCoroutine(getScreenCapture());
@@ -17,12 +26,12 @@ public class APIController : MonoBehaviour
 
   private IEnumerator getScreenCapture()
   {
-    Texture2D texture = new Texture2D(Screen.width, Screen.height);
-    yield return new WaitForEndOfFrame();
-    texture.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
-
+    Graphics.Blit(null, arTexture);
+    // Texture2D texture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGBA32, false);
+    texture.ReadPixels(new Rect(0, 0, arTexture.width, arTexture.height), 0, 0);
+    texture.Apply();
     byte[] jpg = texture.EncodeToJPG();
-    encode = Convert.ToBase64String(jpg);
+    yield return encode = Convert.ToBase64String(jpg);
 
   }
 
@@ -44,7 +53,8 @@ public class APIController : MonoBehaviour
     request.features = new List<Feature>();
     var feature = new Feature();
     feature.type = FeatureType.LABEL_DETECTION.ToString();
-    feature.maxResults = 10;
+    // feature.type = FeatureType.LANDMARK_DETECTION.ToString();
+    feature.maxResults = 1;
     request.features.Add(feature);
 
     req.requests.Add(request);
@@ -55,24 +65,28 @@ public class APIController : MonoBehaviour
 
     var webReq = new UnityWebRequest(apiURL, "POST");
     byte[] postData = Encoding.UTF8.GetBytes(jsonReqBody);
+    print(req.requests[0].image.content);
+    print(req.requests[0].features[0].type);
     webReq.uploadHandler = (UploadHandler)new UploadHandlerRaw(postData);
     webReq.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
     webReq.SetRequestHeader("Content-Type", "application/json");
 
-    yield return webReq.SendWebRequest();
+    // yield return webReq.SendWebRequest();
+    yield return webReq.Send();
 
     if (webReq.isHttpError || webReq.isNetworkError)
     {
-      Debug.LogWarning(webReq.error);
+      Debug.LogWarning("Error:" + webReq.responseCode + webReq.error);
     }
     else
     {
+      Debug.Log("OK:" + webReq.downloadHandler.text);
       var responses = JsonUtility.FromJson<responseBody>(webReq.downloadHandler.text);
-      print(responses);
+      string tag = responses.responses[0].labelAnnotations[0].description;
+      fb.writeObject(tag);
     }
-
-
   }
+
   [System.Serializable]
   public class requestBody
   {
@@ -114,16 +128,17 @@ public class APIController : MonoBehaviour
     SAFE_SEARCH_DETECTION,
     IMAGE_PROPERTIES
   }
-
+  [System.Serializable]
   public class responseBody
   {
     public List<AnnotateImageResponse> responses;
   }
+  [System.Serializable]
   public class AnnotateImageResponse
   {
     public List<EntityAnnotation> labelAnnotations;
   }
-
+  [System.Serializable]
   public class EntityAnnotation
   {
     public string mid;

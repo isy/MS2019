@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class RayController : MonoBehaviour
 {
-  int count = 0;
-  void Start()
-  {
-
-  }
-
   void Update()
   {
     if (Input.GetMouseButtonDown(0))
     {
-      GameManager.instance.api.CallImageAnalysis();
+      // GameManager.instance.api.CallImageAnalysis();
       Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
       print(Input.mousePosition);
       RaycastHit hit = new RaycastHit();
