@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
   public static GameManager instance;
   public Score score;
   public GameTimer gameTimer;
+  public APIController api;
   public string uid;
   // Use this for initialization
   void Start()
