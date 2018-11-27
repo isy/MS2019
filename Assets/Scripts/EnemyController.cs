@@ -10,10 +10,13 @@ public class EnemyController : MonoBehaviour
   public int hp;
   public int score;
 
+    private Animator anim;
+
   // Use this for initialization
   void Start()
   {
     this.gameObject.tag = "Enemy";
+        anim = GetComponent<Animator>();
   }
 
   // Update is called once per frame
@@ -26,6 +29,8 @@ public class EnemyController : MonoBehaviour
   {
     print("Hit");
     AudioSource.PlayClipAtPoint(explosionSE, transform.position);
+        //ADD ikeda 2018/11/27
+        anim.SetTrigger("hit");
     hp--;
     if (hp <= 0)
     {

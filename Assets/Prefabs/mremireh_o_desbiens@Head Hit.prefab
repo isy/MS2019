@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4669555060953542}
   - component: {fileID: 95731611426439390}
+  - component: {fileID: 114431650894229882}
   m_Layer: 0
   m_Name: mremireh_o_desbiens@Head Hit
   m_TagString: Untagged
@@ -109,7 +110,7 @@ Animator:
   m_GameObject: {fileID: 1406367223046134}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: aab3b3eb9101d448b8146067b9d35069, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 11a2a6aa7acd9428da67fe2116425225, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -118,6 +119,22 @@ Animator:
   m_HasTransformHierarchy: 0
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114431650894229882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406367223046134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8517683724cd148d2bf563c272d0737c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effect: {fileID: 1022078978111194, guid: bea06f6f8a2964c4aa0a4f9ce8db0dd8, type: 2}
+  explosionSE: {fileID: 8300000, guid: 8cea342fb7bd34974b64a79a2c23964b, type: 3}
+  anchorObjectName: Enemy
+  hp: 15
+  score: 30
 --- !u!137 &137191055101546586
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
