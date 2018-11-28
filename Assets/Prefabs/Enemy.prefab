@@ -21,8 +21,9 @@ GameObject:
   - component: {fileID: 4669555060953542}
   - component: {fileID: 95731611426439390}
   - component: {fileID: 114431650894229882}
+  - component: {fileID: 65930858753664290}
   m_Layer: 0
-  m_Name: mremireh_o_desbiens@Head Hit
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,13 +95,25 @@ Transform:
   m_GameObject: {fileID: 1406367223046134}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 37.029964, y: 21.153318, z: 6.7961245}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4663008749760078}
   - {fileID: 4235174397039300}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65930858753664290
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406367223046134}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!95 &95731611426439390
 Animator:
   serializedVersion: 3
@@ -133,8 +146,8 @@ MonoBehaviour:
   effect: {fileID: 1022078978111194, guid: bea06f6f8a2964c4aa0a4f9ce8db0dd8, type: 2}
   explosionSE: {fileID: 8300000, guid: 8cea342fb7bd34974b64a79a2c23964b, type: 3}
   anchorObjectName: Enemy
-  hp: 15
-  score: 30
+  hp: 10
+  score: 100
 --- !u!137 &137191055101546586
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

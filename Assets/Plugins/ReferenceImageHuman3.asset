@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0414577f9c6b244e696949154859a4af, type: 3}
-  m_Name: ReferenceImageEnemy
+  m_Name: ReferenceImageHuman3
   m_EditorClassIdentifier: 
   imageName: enemy
-  imageTexture: {fileID: 2800000, guid: 9e52b674ce6634dbb99bec3f903845c2, type: 3}
+  imageTexture: {fileID: 2800000, guid: ef084c875ad864dd5a1c8f1b54226ff7, type: 3}
   physicalSize: 0.06

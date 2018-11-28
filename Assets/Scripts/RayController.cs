@@ -5,9 +5,10 @@ using UnityEngine;
 public class RayController : MonoBehaviour
 {
   int count = 0;
+    
   void Start()
-  {
 
+  {
   }
 
   void Update()

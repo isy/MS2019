@@ -16,13 +16,12 @@ public class EnemyController : MonoBehaviour
   void Start()
   {
     this.gameObject.tag = "Enemy";
-        anim = GetComponent<Animator>();
+       anim = GetComponent<Animator>();
   }
 
   // Update is called once per frame
   void Update()
   {
-
   }
 
   public void Hit()
