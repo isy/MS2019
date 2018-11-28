@@ -11,14 +11,14 @@ public class TotalScore : MonoBehaviour
   private Text killText;
   [SerializeField]
   private Text timeText;
-  private int totalScore;
-  private int timeScore;
-  private int killScore;
+  private int totalScore = 0;
+  private int timeScore = 0;
+  private int killScore = 0;
 
   // Use this for initialization
   void Awake()
   {
-    timeScore = (int)GameManager.instance.gameTimer.totalTime * 10;
+    timeScore = (int)GameManager.instance.restOfTime * 10;
     killScore = GameManager.instance.score.count;
     totalScore = timeScore + killScore;
     timeText.text = timeScore.ToString();
@@ -27,12 +27,6 @@ public class TotalScore : MonoBehaviour
   void Start()
   {
     StartCoroutine(ScoreAnimation(2));
-  }
-
-  // Update is called once per frame
-  void Update()
-  {
-
   }
 
   IEnumerator ScoreAnimation(float time)
