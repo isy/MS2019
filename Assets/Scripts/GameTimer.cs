@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameTimer : MonoBehaviour
 {
-  private float totalTime;
+  public float totalTime;
   [SerializeField]
   private int minute = 0;
   [SerializeField]
