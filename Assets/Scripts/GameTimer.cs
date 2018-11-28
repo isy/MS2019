@@ -14,6 +14,7 @@ public class GameTimer : MonoBehaviour
 
   public bool isStarted = false;
   public Text timeText;
+
   void Start()
   {
     timeText.text = calcTime(minute, seconds);
@@ -28,6 +29,7 @@ public class GameTimer : MonoBehaviour
   {
     totalTime = minute * 60 + seconds;
     totalTime -= Time.deltaTime;
+    GameManager.instance.restOfTime = (int)totalTime;
     if (totalTime < 0)
     {
       SceneManager.LoadSceneAsync("Score");

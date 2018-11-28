@@ -411,6 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b238759f469ed42b9988d6af78e9032b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalTime: 0
   minute: 1
   seconds: 0
   isStarted: 0
@@ -535,6 +536,7 @@ MonoBehaviour:
   score: {fileID: 536907394}
   gameTimer: {fileID: 192005138}
   api: {fileID: 989416517}
+  restOfTime: 0
   uid: 
 --- !u!1 &289512706
 GameObject:
@@ -1892,7 +1894,7 @@ MonoBehaviour:
   delay: 0
   style: 0
   playOnAwake: 1
-  m_progress: 1
+  m_progress: 1.7166667
   usePosition: 0
   useRotation: 0
   useScale: 1
