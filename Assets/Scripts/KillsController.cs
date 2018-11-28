@@ -23,6 +23,7 @@ public class KillsController : MonoBehaviour
     killText.text = killsCount.ToString();
     if (killsCount >= 10)
     {
+      GameManager.instance.gameTimer.isStarted = false;
       SceneManager.LoadSceneAsync("Score");
     }
 
