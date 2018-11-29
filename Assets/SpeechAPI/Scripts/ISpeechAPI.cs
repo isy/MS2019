@@ -1,6 +1,6 @@
 namespace SpeechAPI
 {
-  // Unityにメッセージ送るやーつ
+  // UnityにメッセージのStatus送るやーつ
     public interface ISpeechAPI
     {
         void OnRecognized(string transcription);

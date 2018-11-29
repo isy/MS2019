@@ -22,8 +22,9 @@ public class SpeechAPI : NSObject {
         }
     }
 
+    // Englishにしたいならen-US
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "ja-JP"))!
-    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest()
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
     
@@ -33,7 +34,6 @@ public class SpeechAPI : NSObject {
     }
 
     // iosでマイクを使いたいユーザーに利用許可を尋ねるやーつ
-    
     func requestRecognizerAuthorization() {
         SFSpeechRecognizer.requestAuthorization { authStatus in
             OperationQueue.main.addOperation {
@@ -63,17 +63,17 @@ public class SpeechAPI : NSObject {
     }
 
     // Unityで使いたい開始する時のやーつ
-
     func startRecord() -> Bool {
         if audioEngine.isRunning {
             return false
         }
+        // privateメソッド参照
         try! startRecording()
         return true
     }
 
     // Unityで使いたい止める時のやーつ
-
+    // 音声認識を停止するよ
     func stopRecord() -> Bool {
         if !audioEngine.isRunning {
             return false
@@ -113,6 +113,7 @@ public class SpeechAPI : NSObject {
             }
             
             if error != nil || isFinal {
+                // エラーが起きたら終了
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
                 
