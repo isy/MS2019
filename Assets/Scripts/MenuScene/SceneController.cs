@@ -39,11 +39,6 @@ public class SceneController : MonoBehaviour
       AudioSource.PlayClipAtPoint(startSE, transform.position);
       NextScene();
     }
-
-    if (!IsPointerOverUIObject())
-    {
-      SpeechAPI.SpeechAPI.StartRecord();
-    }
   }
 
   public void NextScene()
@@ -63,15 +58,6 @@ public class SceneController : MonoBehaviour
       loadSlider.fillAmount = async.progress;
       yield return null;
     }
-  }
-
-  private bool IsPointerOverUIObject()
-  {
-    PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-    eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-    List<RaycastResult> results = new List<RaycastResult>();
-    EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-    return results.Count > 0;
   }
 
 }

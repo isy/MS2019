@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 74146220}
   - component: {fileID: 74146221}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Voice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1608,7 +1608,7 @@ MonoBehaviour:
   delay: 0
   style: 0
   playOnAwake: 1
-  m_progress: 1
+  m_progress: 1.6666667
   usePosition: 0
   useRotation: 0
   useScale: 1
