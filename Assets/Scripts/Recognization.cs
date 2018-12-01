@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using ISpeechAPI;
 
 public class Recognization : MonoBehaviour {
 
@@ -12,28 +13,26 @@ public class Recognization : MonoBehaviour {
 		
 	}
 
-  // ボタンをクリックした時の処理
-  public void OnClick() {
-    if (!IsPointerOverUIObject())
-    {
-      Debug.Log("Button click!");
-    }
-  }
-
   public void PushDown() {
-    if (Input.touchCount > 0 && !IsPointerOverUIObject())
-    {
-      push = true;
-      Debug.Log("Button push!");
-    }
+    #if UNITY_EDITOR
+      if (EventSystem.current.IsPointerOverGameObject()) return;
+    #else
+      if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+      {
+        push = true;
+      }
+    #endif
   }
 
   public void PushUp() {
-    if (Input.touchCount > 0 && !IsPointerOverUIObject())
-    {
-      push = false;
-      Debug.Log("Button release!");
-    }
+    #if UNITY_EDITOR
+      if (EventSystem.current.IsPointerOverGameObject()) return;
+    #else
+      if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) 
+      {
+        push = false;
+      }
+    #endif
   }
 	
 	// Update is called once per frame
@@ -44,14 +43,4 @@ public class Recognization : MonoBehaviour {
       SpeechAPI.SpeechAPI.StopRecord();
     }
 	}
-
-  private bool IsPointerOverUIObject()
-  {
-    PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-    eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-    List<RaycastResult> results = new List<RaycastResult>();
-    EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-    return results.Count > 0;
-  }
-
 }

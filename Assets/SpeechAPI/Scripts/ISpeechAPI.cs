@@ -1,4 +1,4 @@
-namespace SpeechAPI
+namespace ISpeechAPI
 {
   // UnityにメッセージのStatus送るやーつ
     public interface ISpeechAPI

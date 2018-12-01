@@ -12,7 +12,7 @@ import Speech
 public class SpeechAPI : NSObject, SFSpeechRecognizerDelegate {
     static let sharedInstance: SpeechAPI = SpeechAPI()
 
-    private var _unitySendMessageGameObjectName: String = "SpeechRecognizer"
+    private var _unitySendMessageGameObjectName: String = "SpeechAPI"
     var unitySendMessageGameObjectName: String {
         get {
             return _unitySendMessageGameObjectName
@@ -69,17 +69,19 @@ public class SpeechAPI : NSObject, SFSpeechRecognizerDelegate {
         }
         // privateメソッド参照
         try! startRecording()
+        print("始まるよ！")
         return true
     }
 
     // Unityで使いたい止める時のやーつ
     // 音声認識を停止するよ
-    func stopRecord() -> Bool {
+    @objc func stopRecord() -> Bool {
         if !audioEngine.isRunning {
             return false
         }
         print("止まるよ！")
         audioEngine.stop()
+        recognitionTask?.finish()
         recognitionRequest.endAudio()
         return true
     }
@@ -89,6 +91,7 @@ public class SpeechAPI : NSObject, SFSpeechRecognizerDelegate {
 
     //Record ---> 録音の開始
     private func startRecording() throws {
+      print("動き始めた！")
         refreshTask()
 
         let audioSession = AVAudioSession.sharedInstance()
@@ -106,6 +109,8 @@ public class SpeechAPI : NSObject, SFSpeechRecognizerDelegate {
         // A recognition task represents a speech recognition session.
         // We keep a reference to the task so that it can be cancelled.
         recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { result, error in
+            // ここでログの確認ができるよ
+            print(result?.bestTranscription.formattedString ?? "")
             var isFinal = false
             
             if let result = result {
@@ -149,11 +154,12 @@ public class SpeechAPI : NSObject, SFSpeechRecognizerDelegate {
     }
 
     func unitySendMessage(_ methodName: String, message: String = "") {
+        print("ここが動いてたら勝ち")
         UnitySendMessage(self.unitySendMessageGameObjectName, methodName, message)
     }
 }
 
-// extension SpeechRecognizer: SFSpeechRecognizerDelegate {
+// extension SpeechAPI: SFSpeechRecognizerDelegate {
 //     public func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
 //         if (available) {
 //             unitySendMessage("OnAvailable")
