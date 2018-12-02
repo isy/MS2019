@@ -11,23 +11,27 @@ public class EnemyController : MonoBehaviour
   public int hp;
   public int score;
 
+    private Animator anim;
+
   // Use this for initialization
   void Awake()
   {
     this.gameObject.tag = "Enemy";
+     anim = GetComponent<Animator>();
     KillsObject = GameObject.Find("TextKills");
   }
 
   // Update is called once per frame
   void Update()
   {
-
   }
 
   public void Hit()
   {
     print("Hit");
     AudioSource.PlayClipAtPoint(explosionSE, transform.position);
+        //ADD ikeda 2018/11/27
+        anim.SetTrigger("hit");
     hp--;
     if (hp <= 0)
     {
