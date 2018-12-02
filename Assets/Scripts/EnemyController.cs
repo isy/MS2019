@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
   public GameObject effect;
+  private GameObject KillsObject;
   public AudioClip explosionSE;
   public string anchorObjectName;
   public int hp;
@@ -13,10 +14,11 @@ public class EnemyController : MonoBehaviour
     private Animator anim;
 
   // Use this for initialization
-  void Start()
+  void Awake()
   {
     this.gameObject.tag = "Enemy";
-       anim = GetComponent<Animator>();
+     anim = GetComponent<Animator>();
+    KillsObject = GameObject.Find("TextKills");
   }
 
   // Update is called once per frame
@@ -39,6 +41,7 @@ public class EnemyController : MonoBehaviour
       GameObject anchorObject = GameObject.Find(anchorObjectName);
       Destroy(anchorObject);
       GameManager.instance.score.numScore(score);
+      KillsObject.GetComponent<KillsController>().incrementCounter();
     }
   }
 }
