@@ -45,6 +45,7 @@ public class GenerateARImageAnchor : MonoBehaviour
       //   ));
       Debug.Log(string.Format("x:{0:0.######} y:{1:0.######} z:{2:0.######}", position.x, position.y, rotation));
       imageAnchorGO = Instantiate<GameObject>(prefabToGenerate, position, rotation);
+      GameManager.instance.api.CallImageAnalysis();
       // imageAnchorGO.tag = "Enemy";
     }
   }

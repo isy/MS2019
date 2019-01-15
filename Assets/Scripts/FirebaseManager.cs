@@ -16,18 +16,21 @@ public class FirebaseManager : MonoBehaviour
     dbReference = FirebaseDatabase.DefaultInstance.RootReference;
   }
 
-  // Update is called once per frame
-  void Update()
-  {
-
-  }
-
   public void writeScore(int scorePoint, string name, string uid)
   {
     Score score = new Score(scorePoint, name);
     string json = JsonUtility.ToJson(score);
 
     dbReference.Child("scores").Child(uid).SetRawJsonValueAsync(json);
+  }
+
+  public void writeObject(string tag)
+  {
+    string uid = GameManager.instance.uid;
+    Object ob = new Object(uid, tag);
+    string json = JsonUtility.ToJson(ob);
+
+    dbReference.Child("objects").Push().SetRawJsonValueAsync(json);
   }
 
   public class Score
@@ -44,6 +47,22 @@ public class FirebaseManager : MonoBehaviour
     {
       this.score = score;
       this.name = name;
+    }
+  }
+  public class Object
+  {
+    public string uid;
+    public string tag;
+
+    public Object()
+    {
+
+    }
+
+    public Object(string uid, string tag)
+    {
+      this.uid = uid;
+      this.tag = tag;
     }
   }
 }

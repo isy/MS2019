@@ -14,11 +14,11 @@ public class RayController : MonoBehaviour
 
   void Update()
   {
-    #if UNITY_EDITOR
-      if (EventSystem.current.IsPointerOverGameObject()) return;
-    #else 
+#if UNITY_EDITOR
+    if (EventSystem.current.IsPointerOverGameObject()) return;
+#else
       if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) return;
-    #endif
+#endif
 
     if (Input.GetMouseButtonDown(0))
     {

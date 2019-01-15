@@ -40,6 +40,9 @@ Assets/Resources/secret.json
 Assets/Resources/secret.json.meta
 .vs/
 
+# ============ #
+# Firebase     #
+# ============ #
 Assets/Plugins/GoogleService-Info.plist
 Assets/Plugins/GoogleService-Info.plist.meta
 
