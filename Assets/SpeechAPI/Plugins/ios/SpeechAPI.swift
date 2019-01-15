@@ -10,9 +10,11 @@ import Foundation
 import Speech
 
 public class SpeechAPI : NSObject, SFSpeechRecognizerDelegate {
-    static let sharedInstance: SpeechRecognizer = SpeechRecognizer()
+    static let sharedInstance: SpeechAPI = SpeechAPI()
+    // static let sharedInstance: SpeechRecognizer = SpeechRecognizer()
 
-    private var _unitySendMessageGameObjectName: String = "SpeechRecognizer"
+    // private var _unitySendMessageGameObjectName: String = "SpeechRecognizer"
+    private var _unitySendMessageGameObjectName: String = "SpeechAPI"
     var unitySendMessageGameObjectName: String {
         get {
             return _unitySendMessageGameObjectName
@@ -115,7 +117,7 @@ public class SpeechAPI : NSObject, SFSpeechRecognizerDelegate {
             
             if let result = result {
               // messageの内容で音声認識の内容が確認できるはず
-              self.unitySendMessage("OnRecognized", message: bestTranscription.formattedString ?? "")
+              self.unitySendMessage("OnRecognized", message: result.bestTranscription.formattedString ?? "")
               isFinal = result.isFinal
             }
             
@@ -154,7 +156,8 @@ public class SpeechAPI : NSObject, SFSpeechRecognizerDelegate {
     }
 
     func unitySendMessage(_ methodName: String, message: String = "") {
-        UnitySendMessage(self.unitySendMessageGameObjectName, methodName, message)
+        print("メッセージ送るよ！！")
+        UnitySendMessage("Voice", "OnCallback", message)
     }
 }
 
