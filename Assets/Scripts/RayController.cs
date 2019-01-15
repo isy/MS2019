@@ -1,11 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class RayController : MonoBehaviour
 {
+  // public Recognization recognization;
+
+  // void Awake ()
+  // {
+  //   recognization = GetComponent<Recognization>();
+  // }
+
   void Update()
   {
+#if UNITY_EDITOR
+    if (EventSystem.current.IsPointerOverGameObject()) return;
+#else
+      if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) return;
+#endif
+
     if (Input.GetMouseButtonDown(0))
     {
       // GameManager.instance.api.CallImageAnalysis();
