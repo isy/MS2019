@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyController : MonoBehaviour
 {
@@ -11,7 +13,7 @@ public class EnemyController : MonoBehaviour
   public int hp;
   public int score;
 
-    private Animator anim;
+  private Animator anim;
 
   // Use this for initialization
   void Awake()
@@ -29,7 +31,9 @@ public class EnemyController : MonoBehaviour
   public void Hit()
   {
     print("Hit");
-    int damage = Random.Range(hp * 0.1, hp * 0.2);
+    int min = Convert.ToInt32(hp * 0.1);
+    int max = Convert.ToInt32(hp * 0.2);
+    int damage = Random.Range(min, max);
     AudioSource.PlayClipAtPoint(explosionSE, transform.position);
     //ADD ikeda 2018/11/27
     anim.SetTrigger("hit");
