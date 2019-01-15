@@ -10,11 +10,17 @@ public class Recognization : MonoBehaviour
   bool push = false;
   [SerializeField]
   private Text RecText;
+  private Image MicImage;
+  [SerializeField]
+  private Sprite _on;
+  [SerializeField]
+  private Sprite _off;
 
   // Use this for initialization
   void Start()
   {
     SpeechAPI.SpeechRecognizer.RequestRecognizerAuthorization();
+    MicImage = this.gameObject.GetComponent<Image>();
   }
 
   public void PushDown()
@@ -24,6 +30,7 @@ public class Recognization : MonoBehaviour
 #else
       if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
       {
+        MicImage.sprite = _on;
         push = true;
       }
 #endif
@@ -36,6 +43,7 @@ public class Recognization : MonoBehaviour
 #else
       if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) 
       {
+        MicImage.sprite = _off;
         push = false;
       }
 #endif
