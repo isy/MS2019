@@ -10,9 +10,9 @@ import Foundation
 import Speech
 
 public class SpeechAPI : NSObject, SFSpeechRecognizerDelegate {
-    static let sharedInstance: SpeechAPI = SpeechAPI()
+    static let sharedInstance: SpeechRecognizer = SpeechRecognizer()
 
-    private var _unitySendMessageGameObjectName: String = "SpeechAPI"
+    private var _unitySendMessageGameObjectName: String = "SpeechRecognizer"
     var unitySendMessageGameObjectName: String {
         get {
             return _unitySendMessageGameObjectName
@@ -75,7 +75,7 @@ public class SpeechAPI : NSObject, SFSpeechRecognizerDelegate {
 
     // Unityで使いたい止める時のやーつ
     // 音声認識を停止するよ
-    @objc func stopRecord() -> Bool {
+    func stopRecord() -> Bool {
         if !audioEngine.isRunning {
             return false
         }
@@ -115,7 +115,7 @@ public class SpeechAPI : NSObject, SFSpeechRecognizerDelegate {
             
             if let result = result {
               // messageの内容で音声認識の内容が確認できるはず
-              self.unitySendMessage("OnRecognized", message: result.bestTranscription.formattedString)
+              self.unitySendMessage("OnRecognized", message: bestTranscription.formattedString ?? "")
               isFinal = result.isFinal
             }
             
@@ -154,13 +154,12 @@ public class SpeechAPI : NSObject, SFSpeechRecognizerDelegate {
     }
 
     func unitySendMessage(_ methodName: String, message: String = "") {
-        print("ここが動いてたら勝ち")
         UnitySendMessage(self.unitySendMessageGameObjectName, methodName, message)
     }
 }
 
 // extension SpeechAPI: SFSpeechRecognizerDelegate {
-//     public func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
+//     public func speechAPI(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
 //         if (available) {
 //             unitySendMessage("OnAvailable")
 //         } else {

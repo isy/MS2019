@@ -19,7 +19,7 @@ public class SceneController : MonoBehaviour
 
   // Use this for initialization
   void Awake() {
-    SpeechAPI.SpeechAPI.RequestRecognizerAuthorization();
+    SpeechAPI.SpeechRecognizer.RequestRecognizerAuthorization();
   }
   void Start()
   {

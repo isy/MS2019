@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // SwiftをObjective-CでexternしたのをUnityで使えるようにImportするよ
 namespace SpeechAPI
 {
-  public static class SpeechAPI
+  public static class SpeechRecognizer
   {
     #if UNITY_IOS && !UNITY_EDITOR
       [DllImport("__Internal")]

@@ -469,7 +469,7 @@ PlayerSettings:
   enableCrashReportAPI: 0
   cameraUsageDescription: AR BABY
   locationUsageDescription: 
-  microphoneUsageDescription: 
+  microphoneUsageDescription: ' This app needs to Mac'
   switchNetLibKey: 
   switchSocketMemoryPoolSize: 6144
   switchSocketAllocatorPoolSize: 128

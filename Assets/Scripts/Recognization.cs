@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using ISpeechAPI;
 
 public class Recognization : MonoBehaviour {
 
@@ -10,7 +9,7 @@ public class Recognization : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+    SpeechAPI.SpeechRecognizer.RequestRecognizerAuthorization();
 	}
 
   public void PushDown() {
@@ -38,9 +37,25 @@ public class Recognization : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (push) {
-      SpeechAPI.SpeechAPI.StartRecord();
+      SpeechAPI.SpeechRecognizer.CallbackGameObjectName = gameObject.name;
+      SpeechAPI.SpeechRecognizer.StartRecord();
     } else {
-      SpeechAPI.SpeechAPI.StopRecord();
+      SpeechAPI.SpeechRecognizer.StopRecord();
     }
 	}
+
+  public void OnAuthorized()
+    {
+        SpeechAPI.SpeechRecognizer.StartRecord();
+    }
+
+    public void OnRecognized(string transcription)
+    {
+        Debug.Log("OnRecognized: " + transcription);
+    }
+
+    public void OnError(string description) { }
+    public void OnUnauthorized() { }
+    public void OnAvailable() { }
+    public void OnUnavailable() { }
 }
