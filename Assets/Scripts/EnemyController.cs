@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
   void Awake()
   {
     this.gameObject.tag = "Enemy";
-     anim = GetComponent<Animator>();
+    anim = GetComponent<Animator>();
     KillsObject = GameObject.Find("TextKills");
   }
 
@@ -29,10 +29,11 @@ public class EnemyController : MonoBehaviour
   public void Hit()
   {
     print("Hit");
+    int damage = Random.Range(hp * 0.1, hp * 0.2);
     AudioSource.PlayClipAtPoint(explosionSE, transform.position);
-        //ADD ikeda 2018/11/27
-        anim.SetTrigger("hit");
-    hp--;
+    //ADD ikeda 2018/11/27
+    anim.SetTrigger("hit");
+    hp -= damage;
     if (hp <= 0)
     {
       GameObject g = Instantiate(effect, transform.position + new Vector3(0, 0.04f, 0), effect.transform.rotation);
