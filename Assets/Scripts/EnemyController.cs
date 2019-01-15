@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyController : MonoBehaviour
 {
@@ -11,13 +13,13 @@ public class EnemyController : MonoBehaviour
   public int hp;
   public int score;
 
-    private Animator anim;
+  private Animator anim;
 
   // Use this for initialization
   void Awake()
   {
     this.gameObject.tag = "Enemy";
-     anim = GetComponent<Animator>();
+    anim = GetComponent<Animator>();
     KillsObject = GameObject.Find("TextKills");
   }
 
@@ -29,10 +31,13 @@ public class EnemyController : MonoBehaviour
   public void Hit()
   {
     print("Hit");
+    int min = Convert.ToInt32(hp * 0.1);
+    int max = Convert.ToInt32(hp * 0.2);
+    int damage = Random.Range(min, max);
     AudioSource.PlayClipAtPoint(explosionSE, transform.position);
-        //ADD ikeda 2018/11/27
-        anim.SetTrigger("hit");
-    hp--;
+    //ADD ikeda 2018/11/27
+    anim.SetTrigger("hit");
+    hp -= damage;
     if (hp <= 0)
     {
       GameObject g = Instantiate(effect, transform.position + new Vector3(0, 0.04f, 0), effect.transform.rotation);
