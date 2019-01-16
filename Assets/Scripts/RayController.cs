@@ -5,13 +5,6 @@ using UnityEngine.EventSystems;
 
 public class RayController : MonoBehaviour
 {
-  // public Recognization recognization;
-
-  // void Awake ()
-  // {
-  //   recognization = GetComponent<Recognization>();
-  // }
-
   void Update()
   {
 #if UNITY_EDITOR
@@ -38,6 +31,6 @@ public class RayController : MonoBehaviour
 
   private void EnemyHit(RaycastHit hit)
   {
-    hit.transform.gameObject.GetComponent<EnemyController>().Hit();
+    hit.transform.gameObject.GetComponent<EnemyController>().Tap();
   }
 }

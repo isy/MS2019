@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65930858753664290}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,9 +144,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 1022078978111194, guid: bea06f6f8a2964c4aa0a4f9ce8db0dd8, type: 2}
+  fireEffect: {fileID: 1756509070997670, guid: 2359b27fdfdf0440b86ad446b3d7961f, type: 2}
+  coldEffect: {fileID: 1270126634788680, guid: 9850385273f7840d28bbf4a41299c7b8, type: 2}
   explosionSE: {fileID: 8300000, guid: 8cea342fb7bd34974b64a79a2c23964b, type: 3}
+  fireSE: {fileID: 8300000, guid: 05be0d22f600642778daebba9f86fcba, type: 3}
+  iceSE: {fileID: 8300000, guid: f1f1071505f434ca2895c6dee829b4ba, type: 3}
   anchorObjectName: Enemy
-  hp: 10
+  hp: 100
   score: 100
 --- !u!137 &137191055101546586
 SkinnedMeshRenderer:
