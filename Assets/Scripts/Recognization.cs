@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,8 @@ public class Recognization : MonoBehaviour
   private Sprite _on;
   [SerializeField]
   private Sprite _off;
+  private string[] fireWord = { "炎", "ファイヤ", "ファイア", "ほのう", "ほのお", "燃え", "もえろ", "燃えろ" };
+  private string[] coldWord = { "氷", "アイス", "凍れ", "こおれ", "こうれ", "こうり" };
 
   // Use this for initialization
   void Start()
@@ -68,6 +71,22 @@ public class Recognization : MonoBehaviour
     Debug.Log("ユニティだ");
     RecText.text = message;
     Debug.Log(message);
+    if (push) return;
+    if (fireWord.Contains(message))
+    {
+      GameObject enemy = FindEnemy();
+      enemy.GetComponent<EnemyController>().Fire();
+    }
+    else if (coldWord.Contains(message))
+    {
+      GameObject enemy = FindEnemy();
+      enemy.GetComponent<EnemyController>().Cold();
+    }
+  }
+
+  private GameObject FindEnemy()
+  {
+    return GameObject.FindGameObjectWithTag("Enemy");
   }
 
   public void OnAuthorized()

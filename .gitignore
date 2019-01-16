@@ -39,6 +39,7 @@ sysinfo.txt #Unity3D Generated File On Crash Reports
 Assets/Resources/secret.json
 Assets/Resources/secret.json.meta
 .vs/
+ProjectSettings/ProjectVersion.txt
 
 # ============ #
 # Firebase     #
