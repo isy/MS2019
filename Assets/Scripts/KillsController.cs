@@ -21,7 +21,7 @@ public class KillsController : MonoBehaviour
   {
     killsCount++;
     killText.text = killsCount.ToString();
-    if (killsCount >= 1)
+    if (killsCount >= 5)
     {
       GameManager.instance.gameTimer.isStarted = false;
       SceneManager.LoadSceneAsync("Score");

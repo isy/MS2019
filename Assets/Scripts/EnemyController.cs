@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviour
     AudioSource.PlayClipAtPoint(explosionSE, transform.position);
         //ADD ikeda 2018/11/27
         anim.SetTrigger("hit");
-    hp--;
+        hp--;
     if (hp <= 0)
     {
       GameObject g = Instantiate(effect, transform.position + new Vector3(0, 0.04f, 0), effect.transform.rotation);
