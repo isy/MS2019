@@ -150,7 +150,7 @@ MonoBehaviour:
   fireSE: {fileID: 8300000, guid: 05be0d22f600642778daebba9f86fcba, type: 3}
   iceSE: {fileID: 8300000, guid: f1f1071505f434ca2895c6dee829b4ba, type: 3}
   anchorObjectName: Enemy
-  hp: 100
+  hp: 200
   score: 100
 --- !u!137 &137191055101546586
 SkinnedMeshRenderer:

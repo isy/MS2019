@@ -38,6 +38,7 @@ public class EnemyController : MonoBehaviour
     anim.SetTrigger("hit");
     randomDamage = UnityEngine.Random.Range((int)(damage - damage * 0.2), (int)(damage + damage * 0.2));
     hp = hp - randomDamage;
+    print(hp);
     if (hp <= 0)
     {
       GameObject g = Instantiate(effect, transform.position + new Vector3(0, 0.04f, 0), effect.transform.rotation);

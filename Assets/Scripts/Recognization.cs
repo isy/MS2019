@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -72,16 +73,21 @@ public class Recognization : MonoBehaviour
     RecText.text = message;
     Debug.Log(message);
     if (push) return;
-    if (fireWord.Contains(message))
+    if (ExistsWord(fireWord, message))
     {
       GameObject enemy = FindEnemy();
       enemy.GetComponent<EnemyController>().Fire();
     }
-    else if (coldWord.Contains(message))
+    else if (ExistsWord(coldWord, message))
     {
       GameObject enemy = FindEnemy();
       enemy.GetComponent<EnemyController>().Cold();
     }
+  }
+
+  private bool ExistsWord(string[] words, string message)
+  {
+    return words.Where(word => Regex.IsMatch(message, string.Format(@"^.*{0}.*", word))).Any();
   }
 
   private GameObject FindEnemy()
