@@ -16,7 +16,7 @@ public class Recognization : MonoBehaviour
   private Sprite _on;
   [SerializeField]
   private Sprite _off;
-  private string[] fireWord = { "炎", "ファイヤ", "ファイア", "ほのう", "ほのお", "燃え", "もえろ" };
+  private string[] fireWord = { "炎", "ファイヤ", "ファイア", "ほのう", "ほのお", "燃え", "もえろ", "燃えろ" };
   private string[] coldWord = { "氷", "アイス", "凍れ", "こおれ", "こうれ", "こうり" };
 
   // Use this for initialization
