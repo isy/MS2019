@@ -18,6 +18,9 @@ public class SceneController : MonoBehaviour
   private Image loadSlider;
 
   // Use this for initialization
+  void Awake() {
+    SpeechAPI.SpeechRecognizer.RequestRecognizerAuthorization();
+  }
   void Start()
   {
     loadUI.SetActive(false);
@@ -28,11 +31,11 @@ public class SceneController : MonoBehaviour
   {
     if (Input.GetMouseButtonDown(0))
     {
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
       if (EventSystem.current.IsPointerOverGameObject()) return;
-#else
+    #else
       if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) return;
-#endif
+    #endif
       AudioSource.PlayClipAtPoint(startSE, transform.position);
       NextScene();
     }
@@ -56,4 +59,5 @@ public class SceneController : MonoBehaviour
       yield return null;
     }
   }
+
 }

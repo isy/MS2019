@@ -1,11 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class RayController : MonoBehaviour
 {
   void Update()
   {
+#if UNITY_EDITOR
+    if (EventSystem.current.IsPointerOverGameObject()) return;
+#else
+      if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) return;
+#endif
+
     if (Input.GetMouseButtonDown(0))
     {
       // GameManager.instance.api.CallImageAnalysis();
@@ -24,6 +31,6 @@ public class RayController : MonoBehaviour
 
   private void EnemyHit(RaycastHit hit)
   {
-    hit.transform.gameObject.GetComponent<EnemyController>().Hit();
+    hit.transform.gameObject.GetComponent<EnemyController>().Tap();
   }
 }
