@@ -11,7 +11,6 @@ public class Recognization : MonoBehaviour
 
   bool push = false;
   [SerializeField]
-  private Text RecText;
   private Image MicImage;
   [SerializeField]
   private Sprite _on;
@@ -69,8 +68,6 @@ public class Recognization : MonoBehaviour
 
   public void OnCallback(string message)
   {
-    Debug.Log("ユニティだ");
-    RecText.text = message;
     Debug.Log(message);
     if (push) return;
     if (ExistsWord(fireWord, message))
