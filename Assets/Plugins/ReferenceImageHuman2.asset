@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: ReferenceImageHuman2
   m_EditorClassIdentifier: 
   imageName: Human1
-  imageTexture: {fileID: 2800000, guid: fc90cdfd0c6d6444daebbf0ba83835c5, type: 3}
+  imageTexture: {fileID: 2800000, guid: ba3d5968304e5467e8c604184bee28d5, type: 3}
   physicalSize: 0.06
