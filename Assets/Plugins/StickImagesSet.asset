@@ -15,6 +15,6 @@ MonoBehaviour:
   referenceImages:
   - {fileID: 11400000, guid: 3d68b416cbfb142b3b32ad292fb0e67a, type: 2}
   - {fileID: 11400000, guid: bf4ddc23d60d449bd9a22ddd58db7c66, type: 2}
-  - {fileID: 11400000, guid: 1be35306c89a04f93a8acd787c9a6dda, type: 2}
+  - {fileID: 11400000, guid: b0c4f553c33be4b989ab0ae9d1ac74e1, type: 2}
   - {fileID: 11400000, guid: dfea9b40b78034e279978e5c3d0b9b54, type: 2}
   - {fileID: 11400000, guid: af3bc6998150c4d2b84013d59240d6e7, type: 2}
