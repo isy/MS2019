@@ -23,7 +23,7 @@ public class ScoreButtonHander : MonoBehaviour
   public void OnClick()
   {
     string name = nameField.text;
-    int score = GameManager.instance.score.count;
+    int score = GameManager.instance.score.count + (int)GameManager.instance.restOfTime * 10;
     string uid = GameManager.instance.uid;
     fb.writeScore(score, name, uid);
     GameManager.instance.initInstance();
